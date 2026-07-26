@@ -53,7 +53,7 @@ const config: Config = {
       title: 'OpenFiat Docs',
       logo: {
         alt: 'OpenFiat Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
