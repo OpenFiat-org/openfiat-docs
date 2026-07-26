@@ -1,0 +1,8 @@
+{
+  "label": "API",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "RPC and HTTP interfaces."
+  }
+}

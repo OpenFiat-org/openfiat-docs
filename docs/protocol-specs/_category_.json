@@ -1,0 +1,8 @@
+{
+  "label": "Protocol Specs",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Machine-readable OFS-#### specifications."
+  }
+}
