@@ -14,7 +14,7 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  url: 'https://docs.openfiat.org',
+  url: 'https://docs.openfiat.network',
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -63,7 +63,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://openfiat.org',
+          href: 'https://openfiat.network',
           label: 'Website',
           position: 'right',
         },
@@ -98,7 +98,7 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {label: 'Website', href: 'https://openfiat.org'},
+            {label: 'Website', href: 'https://openfiat.network'},
             {label: 'GitHub', href: 'https://github.com/OpenFiat-org'},
             {label: 'Discussions', href: 'https://github.com/orgs/OpenFiat-org/discussions'},
           ],
