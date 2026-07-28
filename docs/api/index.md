@@ -94,11 +94,21 @@ GET /ws
 
 streams every successful mutation as it happens — `{"method": "sendX", "result": ...}` — so a client can react to marketplace activity without polling. Filter client-side for the methods you care about.
 
-## Live reference
+## Interactive reference
 
-Every running node also serves this same reference live:
+**[Browse every method →](pathname:///api/reference.html)**
 
-- `GET /openrpc.json` — an [OpenRPC](https://open-rpc.org) 1.2.6 document (the JSON-RPC equivalent of an OpenAPI/Swagger spec), generated directly from the node's own dispatch table so it can never drift from what the node actually runs.
-- `GET /docs` — a self-contained interactive reference page: browse every method's shape and run it live against that node.
+An [OpenRPC](https://open-rpc.org) 1.2.6 document (the JSON-RPC equivalent
+of an OpenAPI/Swagger spec) — [`/api/openrpc.json`](pathname:///api/openrpc.json) —
+plus a self-contained interactive page for browsing every method's params/
+result shape. Both are generated directly from `openfiat-rpc`'s own live
+dispatch table (`cargo run -p openfiat-api --example dump_openrpc`), so
+they can't drift from what a real node actually runs; they're published
+here as a static snapshot since this docs site has no node of its own to
+serve them live. Point the reference page's "Try it" panel at a node
+you're running yourself (defaults to `http://localhost:8080`) to call a
+method for real.
 
-`GET /metrics` exposes Prometheus-format request counters for operators.
+A running node also serves the identical reference live and same-origin
+with its own `/rpc`: `GET /openrpc.json` and `GET /docs`. `GET /metrics`
+exposes Prometheus-format request counters for operators.

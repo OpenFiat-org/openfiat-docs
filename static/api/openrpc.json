@@ -1,0 +1,1507 @@
+{
+  "info": {
+    "description": "Solana-style JSON-RPC 2.0 surface over every OpenFiat domain: advertisements, reservations, settlement, trade, disputes, identity, reputation, governance, service providers, notifications, oracles, risk, snapshots, and sessions. POST to /rpc with {\"jsonrpc\":\"2.0\",\"id\":...,\"method\":...,\"params\":{...}}.",
+    "title": "OpenFiat Node API",
+    "version": "0.1.0"
+  },
+  "methods": [
+    {
+      "name": "getAdvertisement",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get advertisement"
+    },
+    {
+      "name": "getAdvertisements",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get advertisements"
+    },
+    {
+      "name": "getCheckpointHeight",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get checkpoint height"
+    },
+    {
+      "name": "getDeliveryReceipt",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get delivery receipt"
+    },
+    {
+      "name": "getDeliveryReceiptsByWallet",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get delivery receipts by wallet"
+    },
+    {
+      "name": "getDispute",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get dispute"
+    },
+    {
+      "name": "getDisputes",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get disputes"
+    },
+    {
+      "name": "getHealth",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get health"
+    },
+    {
+      "name": "getIdentityClaim",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get identity claim"
+    },
+    {
+      "name": "getIdentityClaimsByWallet",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get identity claims by wallet"
+    },
+    {
+      "name": "getLatestSnapshot",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get latest snapshot"
+    },
+    {
+      "name": "getMedianExchangeRate",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "base": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "base",
+              "quote"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get median exchange rate"
+    },
+    {
+      "name": "getOracleRecord",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get oracle record"
+    },
+    {
+      "name": "getOracleRecords",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get oracle records"
+    },
+    {
+      "name": "getProposal",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get proposal"
+    },
+    {
+      "name": "getProposals",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get proposals"
+    },
+    {
+      "name": "getProvider",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get provider"
+    },
+    {
+      "name": "getProviders",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get providers"
+    },
+    {
+      "name": "getReputation",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get reputation"
+    },
+    {
+      "name": "getReservation",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get reservation"
+    },
+    {
+      "name": "getReservations",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get reservations"
+    },
+    {
+      "name": "getRiskRecordsByWallet",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get risk records by wallet"
+    },
+    {
+      "name": "getSession",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get session"
+    },
+    {
+      "name": "getSessionsByWallet",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get sessions by wallet"
+    },
+    {
+      "name": "getSettlement",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get settlement"
+    },
+    {
+      "name": "getSettlements",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get settlements"
+    },
+    {
+      "name": "getSnapshot",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get snapshot"
+    },
+    {
+      "name": "getSnapshots",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get snapshots"
+    },
+    {
+      "name": "getSubscription",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get subscription"
+    },
+    {
+      "name": "getTrade",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get trade"
+    },
+    {
+      "name": "getTrades",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate",
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "summary": "get trades"
+    },
+    {
+      "name": "getVersion",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get version"
+    },
+    {
+      "name": "getWalletScreening",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "wallet": {
+                "description": "base64-encoded PeerId",
+                "type": "string"
+              }
+            },
+            "required": [
+              "wallet"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "see the corresponding record type in the owning openfiat-core crate; null if not found",
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "summary": "get wallet screening"
+    },
+    {
+      "name": "sendAdvertisementCreate",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send advertisement create"
+    },
+    {
+      "name": "sendArbitratorJoin",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send arbitrator join"
+    },
+    {
+      "name": "sendClaimPublish",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send claim publish"
+    },
+    {
+      "name": "sendDeliveryReport",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send delivery report"
+    },
+    {
+      "name": "sendDisputeOpen",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send dispute open"
+    },
+    {
+      "name": "sendOraclePublish",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send oracle publish"
+    },
+    {
+      "name": "sendPaymentSubmitted",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send payment submitted"
+    },
+    {
+      "name": "sendProposalCreate",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send proposal create"
+    },
+    {
+      "name": "sendProviderRegister",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send provider register"
+    },
+    {
+      "name": "sendReservationRequest",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send reservation request"
+    },
+    {
+      "name": "sendRiskPublish",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send risk publish"
+    },
+    {
+      "name": "sendSessionEstablish",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send session establish"
+    },
+    {
+      "name": "sendSessionMigrate",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send session migrate"
+    },
+    {
+      "name": "sendSessionRenew",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send session renew"
+    },
+    {
+      "name": "sendSessionRevoke",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send session revoke"
+    },
+    {
+      "name": "sendSettlementApproved",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send settlement approved"
+    },
+    {
+      "name": "sendSettlementInitiate",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send settlement initiate"
+    },
+    {
+      "name": "sendSnapshotAnnounce",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send snapshot announce"
+    },
+    {
+      "name": "sendSubscriptionUpdate",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send subscription update"
+    },
+    {
+      "name": "sendVoteCast",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send vote cast"
+    },
+    {
+      "name": "sendVoteCommit",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send vote commit"
+    },
+    {
+      "name": "sendVoteReveal",
+      "params": [
+        {
+          "name": "params",
+          "schema": {
+            "properties": {
+              "data": {
+                "description": "base64-encoded, already-signed wire payload — the caller's own wallet signs it; this node only decodes and applies it",
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "description": "the created/updated resource's ID, or nothing meaningful to return for a state-transition-only method"
+        }
+      },
+      "summary": "send vote reveal"
+    }
+  ],
+  "openrpc": "1.2.6",
+  "servers": [
+    {
+      "name": "this node",
+      "url": "/rpc"
+    }
+  ]
+}
