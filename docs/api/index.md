@@ -71,6 +71,7 @@ format by hand.
 | Risk intelligence | `getWalletScreening`, `sendRiskPublish` |
 | Snapshots | `getLatestSnapshot`, `getCheckpointHeight`, `sendSnapshotAnnounce` |
 | Sessions | `getSession`, `sendSessionEstablish`, `sendSessionRenew`, `sendSessionRevoke`, `sendSessionMigrate` |
+| Chain bridge (Solana, OFS-4300) | `getChainStatus`, `getLatestBlockhash`, `sendTransaction` |
 | Node | `getVersion`, `getHealth` |
 
 ## Errors
