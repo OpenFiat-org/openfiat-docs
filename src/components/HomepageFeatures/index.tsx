@@ -1,60 +1,62 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
-type FeatureItem = {
-  title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+type LinkItem = {
+  label: string;
+  to: string;
 };
 
-const FeatureList: FeatureItem[] = [
+type ColumnItem = {
+  title: string;
+  description: string;
+  links: LinkItem[];
+};
+
+const Columns: ColumnItem[] = [
   {
-    title: 'Decentralized by design',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        OpenFiat coordinates peer-to-peer trade discovery, reputation, and
-        governance without centralized servers, while Solana handles
-        settlement through audited smart contracts.
-      </>
-    ),
+    title: 'Protocol',
+    description: 'How nodes discover each other, gossip events, and stay in sync.',
+    links: [
+      {label: 'Architecture overview', to: '/docs/architecture'},
+      {label: 'Protocol specifications', to: '/docs/protocol-specs'},
+    ],
   },
   {
-    title: 'Open protocol, open source',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Every specification, SDK, and reference implementation is published
-        under the Apache License 2.0 across{' '}
-        <a href="https://github.com/OpenFiat-org">OpenFiat-org</a>.
-      </>
-    ),
+    title: 'API',
+    description: 'The JSON-RPC surface every node exposes to callers.',
+    links: [
+      {label: 'JSON-RPC reference', to: '/docs/api'},
+      {label: 'Subscriptions', to: '/docs/api#subscriptions'},
+      {label: 'Interactive reference', to: '/docs/api#interactive-reference'},
+    ],
   },
   {
-    title: 'Built for developers',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Official SDKs in Rust, TypeScript, and Python share a consistent
-        client interface, backed by a documented RPC surface and protocol
-        conformance vectors.
-      </>
-    ),
+    title: 'Build',
+    description: 'SDKs, running your own node, and integrating as a merchant.',
+    links: [
+      {label: 'SDKs', to: '/docs/sdks'},
+      {label: 'Run a node', to: '/docs/node-operators'},
+      {label: 'Merchant integration', to: '/docs/merchants'},
+    ],
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Column({title, description, links}: ColumnItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className={styles.column}>
+      <Heading as="h3" className={styles.columnTitle}>
+        {title}
+      </Heading>
+      <p className={styles.columnDescription}>{description}</p>
+      <ul className={styles.linkList}>
+        {links.map((link) => (
+          <li key={link.to}>
+            <Link to={link.to}>{link.label}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -63,9 +65,9 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+        <div className={styles.grid}>
+          {Columns.map((column) => (
+            <Column key={column.title} {...column} />
           ))}
         </div>
       </div>

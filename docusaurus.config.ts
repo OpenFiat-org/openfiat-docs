@@ -106,8 +106,11 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} AllenHark. OpenFiat is released under the Apache License 2.0.`,
     },
+    // Code panels stay dark navy regardless of the site's light/dark
+    // theme (same fixed-dark-panel convention docs.stripe.com uses) —
+    // see custom.css's --of-panel-bg, which this is tuned to match.
     prism: {
-      theme: prismThemes.github,
+      theme: prismThemes.dracula,
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
