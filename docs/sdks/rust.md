@@ -24,7 +24,7 @@ openfiat-sdk = { git = "https://github.com/OpenFiat-org/openfiat-sdks", rev = "<
 use openfiat_sdk::{Client, ClientConfig};
 
 let client = Client::new(ClientConfig {
-    endpoint: "http://localhost:8080".to_string(),
+    endpoint: "http://localhost:7080".to_string(),
     ..ClientConfig::default()
 });
 
@@ -62,7 +62,7 @@ Run any of them against a local node:
 
 ```bash
 # terminal 1 — from openfiat-core
-CLI_HTTP_ADDR=127.0.0.1:8080 cargo run -p openfiat-cli
+CLI_HTTP_ADDR=127.0.0.1:7080 cargo run -p openfiat-cli
 
 # terminal 2 — from openfiat-sdks/rust
 cargo run --example trading_bot

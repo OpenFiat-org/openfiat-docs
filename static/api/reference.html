@@ -67,7 +67,7 @@ async function main() {
     const paramsSchema = m.params[0].schema;
     const exampleParams = {};
     for (const key of Object.keys(paramsSchema.properties || {})) exampleParams[key] = '';
-    const savedNodeUrl = localStorage.getItem('openfiat-node-url') || 'http://localhost:8080';
+    const savedNodeUrl = localStorage.getItem('openfiat-node-url') || 'http://localhost:7080';
 
     content.innerHTML = `
       <div class="method-name">${m.name}${badge(m.name)}</div>
@@ -83,7 +83,7 @@ async function main() {
       <section>
         <h3>Try it</h3>
         <p class="hint">Against a node you're running yourself — this docs site has no live node of its own.</p>
-        <input class="node-url" id="node-url" value="${savedNodeUrl}" placeholder="http://localhost:8080" />
+        <input class="node-url" id="node-url" value="${savedNodeUrl}" placeholder="http://localhost:7080" />
         <textarea id="try-params">${JSON.stringify(exampleParams, null, 2)}</textarea>
         <div><button class="run" id="run-button">POST /rpc</button></div>
         <pre id="try-result"></pre>

@@ -107,7 +107,7 @@ dispatch table (`cargo run -p openfiat-api --example dump_openrpc`), so
 they can't drift from what a real node actually runs; they're published
 here as a static snapshot since this docs site has no node of its own to
 serve them live. Point the reference page's "Try it" panel at a node
-you're running yourself (defaults to `http://localhost:8080`) to call a
+you're running yourself (defaults to `http://localhost:7080`) to call a
 method for real.
 
 A running node also serves the identical reference live and same-origin

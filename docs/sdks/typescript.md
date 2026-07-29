@@ -26,7 +26,7 @@ pnpm add "github:OpenFiat-org/openfiat-sdks#<commit>&path:typescript"
 ```typescript
 import { Client } from "@openfiat/sdk";
 
-const client = new Client({ endpoint: "http://localhost:8080", timeoutMs: 30_000 });
+const client = new Client({ endpoint: "http://localhost:7080", timeoutMs: 30_000 });
 const version = await client.call("getVersion", {});
 ```
 
@@ -71,7 +71,7 @@ Run any of them against a local node:
 
 ```bash
 # terminal 1 — from openfiat-core
-CLI_HTTP_ADDR=127.0.0.1:8080 cargo run -p openfiat-cli
+CLI_HTTP_ADDR=127.0.0.1:7080 cargo run -p openfiat-cli
 
 # terminal 2 — from openfiat-sdks/typescript
 pnpm tsx examples/trading_bot.ts
