@@ -9,24 +9,22 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
-const SAMPLE_REQUEST = `curl -X POST https://rpc.openfiat.network/rpc \\
+const SAMPLE_REQUEST = `curl -X POST https://openfiat.allenhark.com/rpc \\
   -H 'content-type: application/json' \\
   -d '{
     "jsonrpc": "2.0",
     "id": 1,
-    "method": "getAdvertisement",
-    "params": { "id": "ad-1" }
+    "method": "getExchangeRate",
+    "params": { "base": "USDC", "quote": "KES" }
   }'`;
 
 const SAMPLE_RESPONSE = `{
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "id": "ad-1",
-    "merchant": "12D3KooW...",
-    "asset": "USDT",
-    "direction": "Sell",
-    "status": "Active"
+    "status": "current",
+    "rate": 129.46493368330698,
+    "expiresAt": 1785451477566
   }
 }`;
 

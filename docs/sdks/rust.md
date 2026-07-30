@@ -62,7 +62,7 @@ Run any of them against a local node:
 
 ```bash
 # terminal 1 — from openfiat-core
-CLI_HTTP_ADDR=127.0.0.1:7080 cargo run -p openfiat-cli
+cargo run -p openfiat-cli -- --rpc-bind-address 127.0.0.1:7080
 
 # terminal 2 — from openfiat-sdks/rust
 cargo run --example trading_bot

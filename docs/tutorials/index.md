@@ -10,7 +10,7 @@ CI against a live node, not just prose. Start a local node first:
 ```bash
 git clone git@github.com:OpenFiat-org/openfiat-core.git
 cd openfiat-core
-CLI_HTTP_ADDR=127.0.0.1:7080 cargo run -p openfiat-cli
+cargo run -p openfiat-cli -- --rpc-bind-address 127.0.0.1:7080
 ```
 
 - **[Build a trading bot](trading-bot)** — publish an advertisement,

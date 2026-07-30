@@ -12,7 +12,7 @@ advertisements reference.
 Start a local node first:
 
 ```bash
-CLI_HTTP_ADDR=127.0.0.1:7080 cargo run -p openfiat-cli
+cargo run -p openfiat-cli -- --rpc-bind-address 127.0.0.1:7080
 ```
 
 ## Rust

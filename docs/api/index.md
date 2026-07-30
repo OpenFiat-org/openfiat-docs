@@ -1,5 +1,6 @@
 ---
 title: API
+sidebar_position: 1
 ---
 
 # API
@@ -26,8 +27,14 @@ Every request is a standard JSON-RPC 2.0 envelope:
 and every response is either a `result` or an `error`, never both:
 
 ```json
-{ "jsonrpc": "2.0", "id": 1, "result": { "id": "ad-1", "merchant": "...", "status": "Active", "..." : "..." } }
+{ "jsonrpc": "2.0", "id": 1, "result": { "id": "ad-1", "status": "Active", "..." : "..." } }
 ```
+
+The public devnet node is at `https://openfiat.allenhark.com` — the same host
+also publishes an entrypoint multiaddr for *nodes*, which is a different
+address for a different job (see
+[getting started](https://github.com/OpenFiat-org/openfiat-core/blob/main/docs/getting-started.md)).
+Any node you run yourself serves the identical surface on `:7080`.
 
 ## Method naming
 
@@ -37,6 +44,9 @@ Read methods start with `get` and never mutate state:
 { "method": "getReservation", "params": { "id": "res-1" } }
 { "method": "getReservations", "params": {} }
 ```
+
+A `getMyX` method is still a read, but it answers only for the wallet the
+caller proves they hold — see [Wallet-proof reads](./wallet-proof-reads.md).
 
 Mutations start with `send` and take one field — `data`, a base64-encoded,
 **already-signed** wire payload the caller's own wallet produced locally.
@@ -57,22 +67,64 @@ format by hand.
 
 | Domain | Example methods |
 | --- | --- |
-| Advertisements | `getAdvertisement`, `getAdvertisements`, `sendAdvertisementCreate` |
-| Reservations | `getReservation`, `getReservations`, `sendReservationRequest` |
-| Settlement | `getSettlement`, `sendSettlementInitiate`, `sendPaymentSubmitted`, `sendSettlementApproved` |
+| Advertisements | `getAdvertisement`, `getAdvertisements`, `sendAdvertisementCreate`, `sendAdvertisementPriceUpdate`, `sendAdvertisementDisable` |
+| Reservations | `getReservation`, `getReservations`, `getMyReservations`, `sendReservationRequest` |
+| Settlement | `getSettlement`, `getSettlements`, `getMySettlements`, `sendSettlementInitiate`, `sendPaymentSubmitted`, `sendSettlementApproved` |
 | Trade (read-only join) | `getTrade`, `getTrades` |
-| Disputes | `getDispute`, `sendDisputeOpen`, `sendArbitratorJoin`, `sendVoteCommit`, `sendVoteReveal` |
+| Disputes | `getDispute`, `getDisputes`, `getMyDisputes`, `sendDisputeOpen`, `sendArbitratorJoin`, `sendVoteCommit`, `sendVoteReveal` |
+| Wallet proofs | `getWalletChallenge`, `getCounterparties` |
+| Attachments and content | `getSettlementAttachments`, `getHeldContent`, `sendAttachmentPublish` |
 | Identity | `getIdentityClaim`, `getIdentityClaimsByWallet`, `sendClaimPublish` |
 | Reputation (read-only) | `getReputation` |
 | Governance | `getProposal`, `getProposals`, `sendProposalCreate`, `sendVoteCast` |
-| Service providers | `getProvider`, `getProviders`, `sendProviderRegister` |
-| Notifications | `getSubscription`, `sendSubscriptionUpdate`, `sendDeliveryReport` |
-| Oracles | `getOracleRecord`, `getMedianExchangeRate`, `sendOraclePublish` |
+| Service providers | `getProvider`, `getProviders`, `sendProviderRegister`, `sendProviderHealthUpdate`, `getProviderEarnings`, `sendProviderWithdraw` |
+| Notifications | `getSubscription`, `getNotificationDispatch`, `sendSubscriptionUpdate`, `sendDeliveryReport` |
+| Oracles | `getOracleRecord`, `getExchangeRate`, `getMedianExchangeRate`, `sendOraclePublish` |
 | Risk intelligence | `getWalletScreening`, `sendRiskPublish` |
+| Rewards | `getRewardObservations` |
 | Snapshots | `getLatestSnapshot`, `getCheckpointHeight`, `sendSnapshotAnnounce` |
 | Sessions | `getSession`, `sendSessionEstablish`, `sendSessionRenew`, `sendSessionRevoke`, `sendSessionMigrate` |
 | Chain bridge (Solana, OFS-4300) | `getChainStatus`, `getLatestBlockhash`, `sendTransaction` |
-| Node | `getVersion`, `getHealth` |
+| Node | `getVersion`, `getHealth`, `getPeers` |
+
+## Reads that do not name the parties
+
+`getSettlement(s)`, `getReservation(s)` and `getDispute(s)` return records
+with party identity removed. That is a deliberate, security-motivated change
+rather than an oversight, and it has a page of its own:
+[what a public read returns](./trade-privacy.md). A party reads its own
+records in full via [wallet-proof reads](./wallet-proof-reads.md).
+
+## Two exchange-rate methods, and which to reach for
+
+`getMedianExchangeRate` returns a bare number or `null`, which is the right
+shape when all you want is a price or nothing.
+
+`getExchangeRate` takes the same `{ base, quote }` and answers with a tagged
+status instead, because `null` collapses two different facts:
+
+```json
+{ "status": "current", "rate": 129.5, "expiresAt": 1753800000000 }
+{ "status": "stale" }
+{ "status": "noData" }
+```
+
+The distinction is not academic. **Stale** means a provider does publish this
+pair and every record has expired (OFS-7000 §12: expired data is not current
+data, however recently it lapsed) — the feed will likely come back, so waiting
+is sensible. **NoData** means nobody prices this corridor at all and waiting
+is pointless. Neither is a number, and a caller must show neither as one.
+
+Reach for `getExchangeRate` unless you have a reason not to. `getMedianExchangeRate`
+stays because clients depend on it.
+
+## What a node knows about the network
+
+`getPeers` reports the peers this node has discovered, the addresses it
+announces about itself, and its own `self_peer_id` in the `12D3Koo…` form that
+goes in an `--entrypoint`. See
+[peer discovery](../node-operators/peer-discovery.md) for the operator's view
+of it.
 
 ## Errors
 
@@ -101,14 +153,21 @@ streams every successful mutation as it happens — `{"method": "sendX", "result
 
 An [OpenRPC](https://open-rpc.org) 1.2.6 document (the JSON-RPC equivalent
 of an OpenAPI/Swagger spec) — [`/api/openrpc.json`](pathname:///api/openrpc.json) —
-plus a self-contained interactive page for browsing every method's params/
-result shape. Both are generated directly from `openfiat-rpc`'s own live
-dispatch table (`cargo run -p openfiat-api --example dump_openrpc`), so
-they can't drift from what a real node actually runs; they're published
-here as a static snapshot since this docs site has no node of its own to
-serve them live. Point the reference page's "Try it" panel at a node
-you're running yourself (defaults to `http://localhost:7080`) to call a
-method for real.
+plus a self-contained interactive page for browsing every method. The method
+*list* is generated directly from `openfiat-rpc`'s own live dispatch table
+(`cargo run -p openfiat-api --example dump_openrpc`), so it cannot drift onto
+a method a real node does not run; it is published here as a static snapshot
+since this docs site has no node of its own to serve it live. Point the
+reference page's "Try it" panel at a node you're running yourself (defaults to
+`http://localhost:7080`) to call a method for real.
+
+Per-method **schemas** in that document are a deliberately simplified,
+convention-based approximation — every `getX(id)` takes `{id}`, every `sendX`
+takes `{data}` — rather than JSON Schema derived from each method's concrete
+Rust types. Where a method departs from those conventions, this site is the
+authoritative shape: the [wallet-proof reads](./wallet-proof-reads.md),
+`getExchangeRate`, and `getPeers` all take parameters the convention does not
+describe.
 
 A running node also serves the identical reference live and same-origin
 with its own `/rpc`: `GET /openrpc.json` and `GET /docs`. `GET /metrics`

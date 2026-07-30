@@ -12,7 +12,7 @@ confirmation step.
 Start a local node first:
 
 ```bash
-CLI_HTTP_ADDR=127.0.0.1:7080 cargo run -p openfiat-cli
+cargo run -p openfiat-cli -- --rpc-bind-address 127.0.0.1:7080
 ```
 
 ## Rust
@@ -55,6 +55,12 @@ let reservation_id = client.send_reservation_request(request, &bot).await?;
 let reservation = client.get_reservation(reservation_id.as_str()).await?.unwrap();
 println!("{:?}", reservation.state); // EscrowLocked
 ```
+
+`getReservation` is an open, unauthenticated read, so what comes back is the
+[redacted view](../api/trade-privacy.md): the state, amount and advertisement
+are there, the requester is not. A bot that needs its own reservations in full
+— including the party fields — reads them with a
+[wallet proof](../api/wallet-proof-reads.md) instead.
 
 ## TypeScript
 
