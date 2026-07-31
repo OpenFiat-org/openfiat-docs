@@ -36,6 +36,39 @@ address for a different job (see
 [getting started](https://github.com/OpenFiat-org/openfiat-core/blob/main/docs/getting-started.md)).
 Any node you run yourself serves the identical surface on `:7080`.
 
+## Keys, peer ids and signatures are base58
+
+Every public key, peer identifier, signature and event identifier is a
+base58 string:
+
+```json
+{
+  "service_id": "node-ALLENLMtV1zEAHT3xpVryqcbdPCB8c9JhM1Jdbe5XHg5",
+  "provider": "12D3KooWK9hQ7TwbfvFiaAxUbRFCkdhS7iEpAJDnewNL1anyREQ1",
+  "provider_public_key": "ALLENLMtV1zEAHT3xpVryqcbdPCB8c9JhM1Jdbe5XHg5"
+}
+```
+
+These were arrays of integers until recently. If you see
+`"provider_public_key": [192, 74, 15, ...]`, you are talking to a node
+that predates the change — and nothing in that response distinguishes a
+published public key from a leaked private one, because an Ed25519 secret
+is also thirty-two bytes. That ambiguity is why it changed. The base58
+form is also the only usable one: `12D3KooW…` is what an `--entrypoint`
+takes and what a log can be searched for.
+
+**This is not only a display change.** A `sendX` payload is signed over
+the JSON of its inner struct, so a client that writes a key into a
+payload as an array produces a transcript the node does not reproduce.
+The signature then fails to verify — which surfaces as a rejected
+mutation, not as a parse error. Use an [SDK](../sdks) and this is handled
+for you; hand-rolling the wire format, encode identifiers as base58.
+
+Byte fields that are **not** identifiers stay arrays. A dispute vote's
+`commitment` and its reveal `secret` are opaque thirty-two byte values,
+not identities, and are sent as arrays. The distinction is by what the
+field *is*, not by its length.
+
 ## Method naming
 
 Read methods start with `get` and never mutate state:
@@ -127,6 +160,20 @@ is pointless. Neither is a number, and a caller must show neither as one.
 
 Reach for `getExchangeRate` unless you have a reason not to. `getMedianExchangeRate`
 stays because clients depend on it.
+
+## Service ids
+
+A node registers under `node-<its base58 public key>`, and a snapshot
+provider under `snapshot-<the same key>` — the prefix is what lets one
+node hold several registry records without them colliding.
+
+The id is derived rather than random so that a node restarting updates
+its existing record instead of leaving a dead entry behind. Deriving it
+from the *whole* key matters: an earlier scheme used the first eight
+bytes of the peer id as hex, which looks like sixteen digits of identity
+but is two, since every Ed25519 peer id opens with the same six-byte
+preamble. Two nodes collided within a few hundred registrations, and the
+second to register displaced the first.
 
 ## What a node knows about the network
 
