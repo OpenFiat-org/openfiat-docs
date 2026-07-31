@@ -83,7 +83,7 @@ format by hand.
 | Oracles | `getOracleRecord`, `getExchangeRate`, `getMedianExchangeRate`, `sendOraclePublish` |
 | Risk intelligence | `getWalletScreening`, `sendRiskPublish` |
 | Rewards | `getRewardObservations` |
-| Snapshots | `getLatestSnapshot`, `getCheckpointHeight`, `sendSnapshotAnnounce` |
+| Snapshots | `getLatestSnapshot`, `getSnapshots`, `getCheckpointSlot`, `sendSnapshotAnnounce` |
 | Sessions | `getSession`, `sendSessionEstablish`, `sendSessionRenew`, `sendSessionRevoke`, `sendSessionMigrate` |
 | Chain bridge (Solana, OFS-4300) | `getChainStatus`, `getLatestBlockhash`, `sendTransaction` |
 | Node | `getVersion`, `getHealth`, `getPeers` |
@@ -156,6 +156,32 @@ GET /ws
 ```
 
 streams every successful mutation as it happens — `{"method": "sendX", "result": ...}` — so a client can react to marketplace activity without polling. Filter client-side for the methods you care about.
+
+## Snapshots are tagged by slot, not by a height
+
+`getCheckpointSlot` returns the Solana slot the last imported snapshot's
+state was current as of, or `null` on a node that has imported none.
+
+It was `getCheckpointHeight`, and the rename is not cosmetic. The old value
+was the *producing node's own count of gossip events*, which is
+per-producer: two nodes holding identical state report different numbers,
+and a node that joined last week reports a lower one than a node running
+since genesis. Comparing two producers' numbers compared nothing.
+
+A slot is the one clock every participant already shares. It also makes a
+claim **checkable** — a node can compare an announced slot against its own
+view of the chain and refuse one from an implausible future, which is
+impossible against a number only the announcer can see.
+
+**What a slot asserts is narrower than it looks.** It says *when* the state
+was captured, not *what* it contains: two nodes snapshotting at the same
+slot may hold slightly different gossip state, because propagation is not
+instant. Treat it as a recency anchor, not a proof that one snapshot
+contains another — the same thing Solana's own snapshots mean by it.
+
+A node that has never observed a slot produces no snapshots and says so.
+That is not a requirement to run an RPC connection: a gossip-only node
+learns slots over the chain bridge.
 
 ## Settled volume, and why it is per asset
 
