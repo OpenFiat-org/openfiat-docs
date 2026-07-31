@@ -72,7 +72,8 @@ format by hand.
 | Settlement | `getSettlement`, `getSettlements`, `getMySettlements`, `sendSettlementInitiate`, `sendPaymentSubmitted`, `sendSettlementApproved` |
 | Trade (read-only join) | `getTrade`, `getTrades` |
 | Disputes | `getDispute`, `getDisputes`, `getMyDisputes`, `sendDisputeOpen`, `sendArbitratorJoin`, `sendVoteCommit`, `sendVoteReveal` |
-| Wallet proofs | `getWalletChallenge`, `getCounterparties` |
+| Wallet proofs | `getWalletChallenge`, `getCounterpartiesChallenge`, `getCounterparties`, `getProviderEarningsChallenge` |
+| Volume | `getSettledVolume` |
 | Attachments and content | `getSettlementAttachments`, `getHeldContent`, `sendAttachmentPublish` |
 | Identity | `getIdentityClaim`, `getIdentityClaimsByWallet`, `sendClaimPublish` |
 | Reputation (read-only) | `getReputation` |
@@ -94,6 +95,15 @@ with party identity removed. That is a deliberate, security-motivated change
 rather than an oversight, and it has a page of its own:
 [what a public read returns](./trade-privacy.md). A party reads its own
 records in full via [wallet-proof reads](./wallet-proof-reads.md).
+
+## Disputes are decided on chain, not by the node answering you
+
+A `getDispute` response carries the reveals a node has collected, and it
+does **not** carry an outcome derived from them. A resolution appears only
+once this node has observed the executing transaction confirm and read what
+it decided — see [how a dispute resolves](./dispute-resolution.md). A
+client that tallies the reveals itself has reintroduced exactly the
+divergence the node stopped producing.
 
 ## Two exchange-rate methods, and which to reach for
 
@@ -146,6 +156,45 @@ GET /ws
 ```
 
 streams every successful mutation as it happens — `{"method": "sendX", "result": ...}` — so a client can react to marketplace activity without polling. Filter client-side for the methods you care about.
+
+## Settled volume, and why it is per asset
+
+`getSettledVolume` answers with one row per asset, never a total:
+
+```json
+{
+  "assets": [
+    { "asset_mint": "2bHPi…RRU", "asset_symbol": "USDC", "decimals": 6,
+      "base_units": 4500000, "settlements": 12 },
+    { "asset_mint": "So111…112", "asset_symbol": "wSOL", "decimals": 9,
+      "base_units": 2000000000, "settlements": 3 }
+  ],
+  "unattributed_settlements": 1,
+  "settlements_known": 16,
+  "scope": "settlements this node has replicated and observed confirmed"
+}
+```
+
+Four things a client must not do with this:
+
+**Do not sum across assets.** They are different tokens at different
+scales; a combined figure adds SOL to USDC and means nothing.
+
+**Do not guess `decimals`.** It is `null`, alongside a `null`
+`asset_symbol`, when this node has no name for that mint. Show the address
+and the raw base units. Assuming `6` is exactly how wSOL — which has nine —
+comes out a thousand times too large.
+
+**Do not hide `unattributed_settlements`.** Those are real confirmed
+settlements whose advertisement has since been deleted, so their asset is
+unrecoverable. Omitting them makes the totals look complete when they are
+short by that many.
+
+**Do not drop `scope`.** It says these are the settlements *this node*
+replicated and confirmed — not the network's whole history. A volume figure
+presented without its scope reads as a global total. `settlements_known`
+beside the counted rows makes the remainder read as trades in flight rather
+than as a discrepancy.
 
 ## Interactive reference
 
