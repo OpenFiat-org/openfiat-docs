@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "Commencer"
+  },
+  "home.cta.apiReference": {
+    "message": "Référence de l'API"
+  },
+  "home.meta.description": {
+    "message": "Documentation développeur du protocole OpenFiat."
+  },
+  "home.col.protocol.title": {
+    "message": "Protocole"
+  },
+  "home.col.protocol.desc": {
+    "message": "Comment les nœuds se découvrent, diffusent des événements et restent synchronisés."
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "La surface JSON-RPC que chaque nœud expose aux appelants."
+  },
+  "home.col.build.title": {
+    "message": "Développer"
+  },
+  "home.col.build.desc": {
+    "message": "SDK, exécuter votre propre nœud et vous intégrer en tant que marchand."
+  },
+  "home.link.architecture": {
+    "message": "Aperçu de l'architecture"
+  },
+  "home.link.protocolSpecs": {
+    "message": "Spécifications du protocole"
+  },
+  "home.link.jsonRpc": {
+    "message": "Référence JSON-RPC"
+  },
+  "home.link.subscriptions": {
+    "message": "Abonnements"
+  },
+  "home.link.interactive": {
+    "message": "Référence interactive"
+  },
+  "home.link.sdks": {
+    "message": "SDK"
+  },
+  "home.link.runNode": {
+    "message": "Exécuter un nœud"
+  },
+  "home.link.merchant": {
+    "message": "Intégration marchand"
+  }
+}

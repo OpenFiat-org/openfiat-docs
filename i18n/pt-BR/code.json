@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "Começar"
+  },
+  "home.cta.apiReference": {
+    "message": "Referência da API"
+  },
+  "home.meta.description": {
+    "message": "Documentação para desenvolvedores do protocolo OpenFiat."
+  },
+  "home.col.protocol.title": {
+    "message": "Protocolo"
+  },
+  "home.col.protocol.desc": {
+    "message": "Como os nós se descobrem, difundem eventos e permanecem sincronizados."
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "A superfície JSON-RPC que cada nó expõe aos chamadores."
+  },
+  "home.col.build.title": {
+    "message": "Desenvolver"
+  },
+  "home.col.build.desc": {
+    "message": "SDKs, executar seu próprio nó e integrar como comerciante."
+  },
+  "home.link.architecture": {
+    "message": "Visão geral da arquitetura"
+  },
+  "home.link.protocolSpecs": {
+    "message": "Especificações do protocolo"
+  },
+  "home.link.jsonRpc": {
+    "message": "Referência JSON-RPC"
+  },
+  "home.link.subscriptions": {
+    "message": "Assinaturas"
+  },
+  "home.link.interactive": {
+    "message": "Referência interativa"
+  },
+  "home.link.sdks": {
+    "message": "SDKs"
+  },
+  "home.link.runNode": {
+    "message": "Executar um nó"
+  },
+  "home.link.merchant": {
+    "message": "Integração de comerciante"
+  }
+}

@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
@@ -41,12 +42,12 @@ function HomepageHeader() {
             <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
             <div className={styles.buttons}>
               <Link className="button button--primary button--lg" to="/docs/architecture">
-                Get started
+                <Translate id="home.cta.getStarted">Get started</Translate>
               </Link>
               <Link
                 className="button button--secondary button--lg"
                 to="/docs/api">
-                API reference
+                <Translate id="home.cta.apiReference">API reference</Translate>
               </Link>
             </div>
           </div>
@@ -69,7 +70,10 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="Developer documentation for the OpenFiat protocol.">
+      description={translate({
+        id: 'home.meta.description',
+        message: 'Developer documentation for the OpenFiat protocol.',
+      })}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

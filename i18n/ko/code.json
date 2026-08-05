@@ -1,0 +1,11 @@
+{
+  "home.cta.getStarted": {
+    "message": "Get started"
+  },
+  "home.cta.apiReference": {
+    "message": "API reference"
+  },
+  "home.meta.description": {
+    "message": "Developer documentation for the OpenFiat protocol."
+  }
+}

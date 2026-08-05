@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "ابدأ"
+  },
+  "home.cta.apiReference": {
+    "message": "مرجع API"
+  },
+  "home.meta.description": {
+    "message": "وثائق المطوّرين لبروتوكول OpenFiat."
+  },
+  "home.col.protocol.title": {
+    "message": "البروتوكول"
+  },
+  "home.col.protocol.desc": {
+    "message": "كيف تكتشف العُقد بعضها، وتنشر الأحداث، وتبقى متزامنة."
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "واجهة JSON-RPC التي تكشفها كل عُقدة للمستدعين."
+  },
+  "home.col.build.title": {
+    "message": "البناء"
+  },
+  "home.col.build.desc": {
+    "message": "حِزم SDK، وتشغيل عُقدتك الخاصة، والاندماج كتاجر."
+  },
+  "home.link.architecture": {
+    "message": "نظرة عامة على البنية"
+  },
+  "home.link.protocolSpecs": {
+    "message": "مواصفات البروتوكول"
+  },
+  "home.link.jsonRpc": {
+    "message": "مرجع JSON-RPC"
+  },
+  "home.link.subscriptions": {
+    "message": "الاشتراكات"
+  },
+  "home.link.interactive": {
+    "message": "مرجع تفاعلي"
+  },
+  "home.link.sdks": {
+    "message": "حِزم SDK"
+  },
+  "home.link.runNode": {
+    "message": "تشغيل عُقدة"
+  },
+  "home.link.merchant": {
+    "message": "تكامل التاجر"
+  }
+}

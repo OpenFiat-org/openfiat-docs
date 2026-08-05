@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "はじめる"
+  },
+  "home.cta.apiReference": {
+    "message": "APIリファレンス"
+  },
+  "home.meta.description": {
+    "message": "OpenFiatプロトコルの開発者向けドキュメント。"
+  },
+  "home.col.protocol.title": {
+    "message": "プロトコル"
+  },
+  "home.col.protocol.desc": {
+    "message": "ノードが互いを発見し、イベントを伝播し、同期を保つ仕組み。"
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "各ノードが呼び出し元に公開するJSON-RPCインターフェース。"
+  },
+  "home.col.build.title": {
+    "message": "開発"
+  },
+  "home.col.build.desc": {
+    "message": "SDK、自身のノードの運用、マーチャントとしての統合。"
+  },
+  "home.link.architecture": {
+    "message": "アーキテクチャ概要"
+  },
+  "home.link.protocolSpecs": {
+    "message": "プロトコル仕様"
+  },
+  "home.link.jsonRpc": {
+    "message": "JSON-RPCリファレンス"
+  },
+  "home.link.subscriptions": {
+    "message": "サブスクリプション"
+  },
+  "home.link.interactive": {
+    "message": "インタラクティブリファレンス"
+  },
+  "home.link.sdks": {
+    "message": "SDK"
+  },
+  "home.link.runNode": {
+    "message": "ノードを実行"
+  },
+  "home.link.merchant": {
+    "message": "マーチャント統合"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Architecture": {
+    "message": "Mimari",
+    "description": "The label for category 'Architecture' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Architecture.link.generated-index.description": {
+    "message": "System design and component boundaries.",
+    "description": "The generated-index page description for category 'Architecture' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Whitepaper": {
+    "message": "Teknik doküman",
+    "description": "The label for category 'Whitepaper' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Whitepaper.link.generated-index.description": {
+    "message": "The canonical OpenFiat whitepaper.",
+    "description": "The generated-index page description for category 'Whitepaper' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Protocol Specs": {
+    "message": "Protokol spesifikasyonları",
+    "description": "The label for category 'Protocol Specs' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Protocol Specs.link.generated-index.description": {
+    "message": "Machine-readable OFS-#### specifications.",
+    "description": "The generated-index page description for category 'Protocol Specs' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.SDKs": {
+    "message": "SDK'lar",
+    "description": "The label for category 'SDKs' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.SDKs.link.generated-index.description": {
+    "message": "Official client libraries.",
+    "description": "The generated-index page description for category 'SDKs' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Wallet": {
+    "message": "Cüzdan",
+    "description": "The label for category 'Wallet' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Wallet.link.generated-index.description": {
+    "message": "The OpenFiat wallet application.",
+    "description": "The generated-index page description for category 'Wallet' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Merchants": {
+    "message": "Satıcılar",
+    "description": "The label for category 'Merchants' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Merchants.link.generated-index.description": {
+    "message": "Running a merchant business on OpenFiat.",
+    "description": "The generated-index page description for category 'Merchants' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Node Operators": {
+    "message": "Düğüm operatörleri",
+    "description": "The label for category 'Node Operators' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Node Operators.link.generated-index.description": {
+    "message": "Running OpenFiat network infrastructure.",
+    "description": "The generated-index page description for category 'Node Operators' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.API": {
+    "message": "API",
+    "description": "The label for category 'API' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.API.link.generated-index.description": {
+    "message": "RPC and HTTP interfaces.",
+    "description": "The generated-index page description for category 'API' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Tutorials": {
+    "message": "Eğitimler",
+    "description": "The label for category 'Tutorials' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Tutorials.link.generated-index.description": {
+    "message": "Step-by-step guides.",
+    "description": "The generated-index page description for category 'Tutorials' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.FAQ": {
+    "message": "SSS",
+    "description": "The label for category 'FAQ' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.FAQ.link.generated-index.description": {
+    "message": "Frequently asked questions.",
+    "description": "The generated-index page description for category 'FAQ' in sidebar 'docsSidebar'"
+  }
+}

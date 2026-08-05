@@ -23,9 +23,48 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  // Every language with more than ~50M native speakers, as standard written
+  // languages (no dialects) — matching the openfiat-app locale set so the two
+  // properties speak the same languages. Untranslated docs fall back to the
+  // English content, so a locale can ship the moment it is added and be filled
+  // in over time. `localeConfigs` supplies each locale's endonym (shown in the
+  // navbar dropdown) and writing direction; Arabic, Urdu and Persian are RTL.
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: [
+      'en', 'zh-Hans', 'es', 'hi', 'pt-BR', 'bn', 'ru', 'ja', 'vi', 'tr',
+      'mr', 'te', 'ko', 'fr', 'ta', 'de', 'it', 'gu', 'pa', 'th', 'id',
+      'pl', 'uk', 'kn', 'ar', 'ur', 'fa',
+    ],
+    localeConfigs: {
+      en: {label: 'English'},
+      'zh-Hans': {label: '简体中文'},
+      es: {label: 'Español'},
+      hi: {label: 'हिन्दी'},
+      'pt-BR': {label: 'Português (Brasil)'},
+      bn: {label: 'বাংলা'},
+      ru: {label: 'Русский'},
+      ja: {label: '日本語'},
+      vi: {label: 'Tiếng Việt'},
+      tr: {label: 'Türkçe'},
+      mr: {label: 'मराठी'},
+      te: {label: 'తెలుగు'},
+      ko: {label: '한국어'},
+      fr: {label: 'Français'},
+      ta: {label: 'தமிழ்'},
+      de: {label: 'Deutsch'},
+      it: {label: 'Italiano'},
+      gu: {label: 'ગુજરાતી'},
+      pa: {label: 'ਪੰਜਾਬੀ'},
+      th: {label: 'ไทย'},
+      id: {label: 'Bahasa Indonesia'},
+      pl: {label: 'Polski'},
+      uk: {label: 'Українська'},
+      kn: {label: 'ಕನ್ನಡ'},
+      ar: {label: 'العربية', direction: 'rtl'},
+      ur: {label: 'اردو', direction: 'rtl'},
+      fa: {label: 'فارسی', direction: 'rtl'},
+    },
   },
 
   presets: [
@@ -70,6 +109,12 @@ const config: Config = {
         {
           href: 'https://github.com/OpenFiat-org',
           label: 'GitHub',
+          position: 'right',
+        },
+        // Language switcher. Lists every configured locale by its endonym and
+        // switches while staying on the current doc.
+        {
+          type: 'localeDropdown',
           position: 'right',
         },
       ],

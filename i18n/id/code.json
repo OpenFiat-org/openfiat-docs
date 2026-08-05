@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "Mulai"
+  },
+  "home.cta.apiReference": {
+    "message": "Referensi API"
+  },
+  "home.meta.description": {
+    "message": "Dokumentasi pengembang untuk protokol OpenFiat."
+  },
+  "home.col.protocol.title": {
+    "message": "Protokol"
+  },
+  "home.col.protocol.desc": {
+    "message": "Bagaimana node saling menemukan, menyebarkan peristiwa, dan tetap sinkron."
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "Antarmuka JSON-RPC yang diekspos setiap node kepada pemanggil."
+  },
+  "home.col.build.title": {
+    "message": "Bangun"
+  },
+  "home.col.build.desc": {
+    "message": "SDK, menjalankan node Anda sendiri, dan berintegrasi sebagai pedagang."
+  },
+  "home.link.architecture": {
+    "message": "Ikhtisar arsitektur"
+  },
+  "home.link.protocolSpecs": {
+    "message": "Spesifikasi protokol"
+  },
+  "home.link.jsonRpc": {
+    "message": "Referensi JSON-RPC"
+  },
+  "home.link.subscriptions": {
+    "message": "Langganan"
+  },
+  "home.link.interactive": {
+    "message": "Referensi interaktif"
+  },
+  "home.link.sdks": {
+    "message": "SDK"
+  },
+  "home.link.runNode": {
+    "message": "Jalankan node"
+  },
+  "home.link.merchant": {
+    "message": "Integrasi pedagang"
+  }
+}

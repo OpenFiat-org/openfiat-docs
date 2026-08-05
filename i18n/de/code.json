@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "Loslegen"
+  },
+  "home.cta.apiReference": {
+    "message": "API-Referenz"
+  },
+  "home.meta.description": {
+    "message": "Entwicklerdokumentation für das OpenFiat-Protokoll."
+  },
+  "home.col.protocol.title": {
+    "message": "Protokoll"
+  },
+  "home.col.protocol.desc": {
+    "message": "Wie Knoten einander finden, Ereignisse verbreiten und synchron bleiben."
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "Die JSON-RPC-Schnittstelle, die jeder Knoten Aufrufern bietet."
+  },
+  "home.col.build.title": {
+    "message": "Entwickeln"
+  },
+  "home.col.build.desc": {
+    "message": "SDKs, einen eigenen Knoten betreiben und als Händler integrieren."
+  },
+  "home.link.architecture": {
+    "message": "Architekturübersicht"
+  },
+  "home.link.protocolSpecs": {
+    "message": "Protokollspezifikationen"
+  },
+  "home.link.jsonRpc": {
+    "message": "JSON-RPC-Referenz"
+  },
+  "home.link.subscriptions": {
+    "message": "Abonnements"
+  },
+  "home.link.interactive": {
+    "message": "Interaktive Referenz"
+  },
+  "home.link.sdks": {
+    "message": "SDKs"
+  },
+  "home.link.runNode": {
+    "message": "Knoten betreiben"
+  },
+  "home.link.merchant": {
+    "message": "Händler-Integration"
+  }
+}

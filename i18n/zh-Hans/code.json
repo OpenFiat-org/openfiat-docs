@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "开始"
+  },
+  "home.cta.apiReference": {
+    "message": "API 参考"
+  },
+  "home.meta.description": {
+    "message": "OpenFiat 协议的开发者文档。"
+  },
+  "home.col.protocol.title": {
+    "message": "协议"
+  },
+  "home.col.protocol.desc": {
+    "message": "节点如何相互发现、传播事件并保持同步。"
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "每个节点向调用方公开的 JSON-RPC 接口。"
+  },
+  "home.col.build.title": {
+    "message": "构建"
+  },
+  "home.col.build.desc": {
+    "message": "SDK、运行你自己的节点，以及作为商户集成。"
+  },
+  "home.link.architecture": {
+    "message": "架构概览"
+  },
+  "home.link.protocolSpecs": {
+    "message": "协议规范"
+  },
+  "home.link.jsonRpc": {
+    "message": "JSON-RPC 参考"
+  },
+  "home.link.subscriptions": {
+    "message": "订阅"
+  },
+  "home.link.interactive": {
+    "message": "交互式参考"
+  },
+  "home.link.sdks": {
+    "message": "SDK"
+  },
+  "home.link.runNode": {
+    "message": "运行节点"
+  },
+  "home.link.merchant": {
+    "message": "商户集成"
+  }
+}

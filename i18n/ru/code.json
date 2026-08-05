@@ -1,0 +1,53 @@
+{
+  "home.cta.getStarted": {
+    "message": "Начать"
+  },
+  "home.cta.apiReference": {
+    "message": "Справочник API"
+  },
+  "home.meta.description": {
+    "message": "Документация для разработчиков протокола OpenFiat."
+  },
+  "home.col.protocol.title": {
+    "message": "Протокол"
+  },
+  "home.col.protocol.desc": {
+    "message": "Как узлы находят друг друга, распространяют события и синхронизируются."
+  },
+  "home.col.api.title": {
+    "message": "API"
+  },
+  "home.col.api.desc": {
+    "message": "Интерфейс JSON-RPC, который каждый узел предоставляет вызывающим."
+  },
+  "home.col.build.title": {
+    "message": "Разработка"
+  },
+  "home.col.build.desc": {
+    "message": "SDK, запуск собственного узла и интеграция в качестве продавца."
+  },
+  "home.link.architecture": {
+    "message": "Обзор архитектуры"
+  },
+  "home.link.protocolSpecs": {
+    "message": "Спецификации протокола"
+  },
+  "home.link.jsonRpc": {
+    "message": "Справочник JSON-RPC"
+  },
+  "home.link.subscriptions": {
+    "message": "Подписки"
+  },
+  "home.link.interactive": {
+    "message": "Интерактивный справочник"
+  },
+  "home.link.sdks": {
+    "message": "SDK"
+  },
+  "home.link.runNode": {
+    "message": "Запустить узел"
+  },
+  "home.link.merchant": {
+    "message": "Интеграция продавца"
+  }
+}
